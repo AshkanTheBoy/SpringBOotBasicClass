@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
-@PropertySource(value="classpath:app_ru_RU.properties")
+@PropertySource(value="classpath:app_en_US.properties")
 public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class,args);

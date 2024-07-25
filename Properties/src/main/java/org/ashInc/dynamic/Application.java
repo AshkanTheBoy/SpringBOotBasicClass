@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 public class Application {
     public static void main(String[] args) {
-        SpringApplication.run(org.ashInc.fixed.Application.class,args);
+        SpringApplication.run(Application.class,args);
     }
 
     @RestController
@@ -24,11 +24,13 @@ public class Application {
 
         @RequestMapping({"/","/index"})
         public String index(@RequestParam(name="lang", required = false) String lang) {
-            //System.out.println(LocaleContextHolder.getLocale());
+            System.out.println(LocaleContextHolder.getLocale());
             // return messageSource.getMessage("app.hello", null, LocaleContextHolder.getLocale());
 
             String hello = messageSource.getMessage("app.hello", null, LocaleContextHolder.getLocale());
-            String name = messageSource.getMessage(" app.name", null, LocaleContextHolder.getLocale());
+            String name = messageSource.getMessage("app.name", null, LocaleContextHolder.getLocale());
+            System.out.println(hello);
+            System.out.println(name);
             return String.format("%s, %s!%n", hello, name);
 
         }
