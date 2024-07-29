@@ -15,6 +15,7 @@
         <module>AOP</module>
         <module>Hibernate</module>
         <module>H2</module>
+        <module>Persistence</module>
     </modules>
 
     <properties>
