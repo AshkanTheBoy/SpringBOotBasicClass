@@ -16,6 +16,8 @@
         <module>Hibernate</module>
         <module>H2</module>
         <module>Persistence</module>
+        <module>JPALifeCycle</module>
+        <module>JPADefaultValues</module>
     </modules>
 
     <properties>

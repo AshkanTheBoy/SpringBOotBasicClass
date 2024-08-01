@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Редактирование столика</title>
+</head>
+<body>
+<h1>Редактирование столика</h1>
+<form th:action="@{/tables/{id}(id=${table.id})}"
+      th:object="${table}" method="post">
+    <label for="number">Номер:</label>
+    <input type="text" id="number" th:field="*{number}" required />
+    <label for="count">Количество мест:</label>
+    <input type="text" id="count" th:field="*{count}" required />
+    <label for="hall">Номер зала:</label>
+    <input type="text" id="hall" th:field="*{hall}" required />
+    <label for="category">Категория:</label>
+    <select id="category" name="category" th:field="*{category}">
+        <option th:each="category : ${T(org.AshInc.table.TableRest.Category).values()}"
+                th:value="${category}"
+                th:text="${category.name()}">
+
+        </option>
+    </select>
+    <button type="submit">Сохранить</button>
+</form>
+<a href="/tables">Назад к списку таблиц</a>
+</body>
+</html>

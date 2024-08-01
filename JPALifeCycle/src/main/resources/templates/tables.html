@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Список столиков</title>
+</head>
+<body>
+<h1>Список столиков</h1>
+<a th:href="@{/tables/new}">Создать новый столик</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Номер</th>
+        <th>Количество мест</th>
+        <th>Зал</th>
+        <th>Категория</th>
+        <th>Действия</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="table : ${tables}">
+        <td th:text="${table.id}"></td>
+        <td th:text="${table.number}"></td>
+        <td th:text="${table.count}"></td>
+        <td th:text="${table.hall}"></td>
+        <td th:text="${table.category}"></td>
+        <td>
+            <a th:href="@{/tables/{id}/edit(id=${table.id})}">Редактировать</a>
+            <form th:action="@{/tables/{id}/delete(id=${table.id})}" method="post" style="display:inline;">
+                <button type="submit">Удалить</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
