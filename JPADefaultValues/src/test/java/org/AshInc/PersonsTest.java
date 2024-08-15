@@ -29,8 +29,23 @@ public class PersonsTest {
     public void createSupplier(){
         Supplier supplier = new Supplier();
         supplier = supplierRepository.save(supplier);
-        System.out.println(supplier.toString());
-        assertEquals(supplier.getFirstName(),"John");
+        System.out.println(supplier);
+        assertEquals(supplier.getFirstName(),"Jane");
         assertNull(supplier.getPhoneNumber());
+    }
+
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Test
+    public void createEmployee(){
+        Employee employee = new Employee();
+        System.out.println(employee);
+        employee.setEmail(" d@gmail.com ");
+        employee = employeeRepository.save(employee);
+        System.out.println(employee);
+
+        assertEquals(employee.getFirstName(),"David");
+        assertNull(employee.getPhoneNumber());
     }
 }

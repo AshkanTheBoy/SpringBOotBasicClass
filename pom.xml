@@ -18,6 +18,7 @@
         <module>Persistence</module>
         <module>JPALifeCycle</module>
         <module>JPADefaultValues</module>
+        <module>Spring-Upload-Download</module>
     </modules>
 
     <properties>

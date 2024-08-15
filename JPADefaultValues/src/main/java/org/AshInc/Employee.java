@@ -4,34 +4,37 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Generated;
 import org.hibernate.annotations.GenerationTime;
+import org.hibernate.annotations.Generated;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Supplier {
+public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 25)
-    @ColumnDefault("'Jane'")
-    @Generated(GenerationTime.INSERT)
+    @ColumnDefault("'David'")
+    @Generated(GenerationTime.INSERT) //Значение по умолчанию добавляется при вставке
+    // alternately @Column(columnDefinition = "VARCHAR(25) DEFAULT 'David'")
     private String firstName;
 
     @Column(length = 25)
-    @ColumnDefault("'Doe'")
-    @Generated(GenerationTime.INSERT)
+    @ColumnDefault("'Smith'")
     private String lastName;
 
-    private String email="js@gmail.com";
+    @Column(unique = true, nullable = false)
+    private String email;
+
     private String phoneNumber;
 } 
