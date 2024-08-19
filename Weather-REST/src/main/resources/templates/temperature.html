@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Temperature Plot</title>
+    <script src="
+https://cdn.jsdelivr.net/npm/chart.js
+"></script>
+</head>
+<body>
+<h1>Погода</h1>
+<p>Время: <span th:text="${currentHour}">Время</span>ч</p>
+<p>Значение температуры: <span th:text="${temperature}">Температура</span>°C</p>
+<h1>График температуры</h1>
+<canvas id="temperatureChart" width="400" height="200"></canvas>
+<script th:inline="javascript">
+
+    const ctx = document.getElementById('temperatureChart').getContext('2d');
+    const temperatures = /*[[${temperatures}]]*/ []; // Получение данных из модели
+
+    const temperatureChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: Array.from({length: 24}, (_, i) => i + 'h'), // Часы от 0 до 23
+            datasets: [{
+                label: 'Температура (°C)',
+                data: temperatures,
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2,
+                fill: false
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Температура (°C)'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Часы'
+                    }
+                }
+            }
+        }
+    });
+
+</script>
+</body>
+</html>

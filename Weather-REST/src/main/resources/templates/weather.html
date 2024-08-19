@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Weather</title>
+</head>
+<body>
+<h1>Погода</h1>
+<p>Время: <span th:text="${currentHour}">Время</span>ч</p>
+<p>Значение температуры: <span th:text="${temperature}">Температура</span>°C</p>
+</body>
+</html>
