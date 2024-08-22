@@ -22,6 +22,7 @@ public class FirmController {
 
     @GetMapping({"/index","/"})
     public String index(Model model) {
+        firmService.saveFirms();
         model.addAttribute("firms", firmService.findAll());
         model.addAttribute("model", new ModelCar()); //Иначе будет ошибка при первом рендеринге
         return "index";

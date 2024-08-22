@@ -43,7 +43,7 @@ public class FirmService {
         }
         Arrays.stream(firms)
                 .forEach(firm -> {
-                    Set<ModelJson> modelsJson = (Set<ModelJson>) firm.getModels();
+                    Set<ModelJson> modelsJson = new HashSet<>(firm.getModels());
                     Set<ModelCar> models = new HashSet<>();
                     modelsJson.stream()
                             .forEach(model -> {
@@ -67,7 +67,6 @@ public class FirmService {
                             .models(models)
                             .build();
                     firmRepository.save(firmNew);
-
                 });
     }
 } 

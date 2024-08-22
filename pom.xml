@@ -21,6 +21,7 @@
         <module>Spring-Upload-Download</module>
         <module>Weather-REST</module>
         <module>Spring-cars</module>
+        <module>SpringSongs</module>
     </modules>
 
     <properties>

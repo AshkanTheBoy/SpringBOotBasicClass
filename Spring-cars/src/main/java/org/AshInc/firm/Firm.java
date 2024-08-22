@@ -32,4 +32,5 @@ public class Firm {
     private Integer yearTo;
     @OneToMany(cascade = CascadeType.PERSIST, orphanRemoval = true)
     private Set<ModelCar> models;
+
 }
