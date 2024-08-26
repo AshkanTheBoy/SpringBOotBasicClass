@@ -22,6 +22,7 @@
         <module>Weather-REST</module>
         <module>Spring-cars</module>
         <module>SpringSongs</module>
+        <module>Spring-ShoppingCart-thymeleaf</module>
     </modules>
 
     <properties>

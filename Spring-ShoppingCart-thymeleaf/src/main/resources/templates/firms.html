@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="
+http://www.thymeleaf.org
+" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+<body>
+<th:block th:insert="nav.html"></th:block>
+<h3>List of firms</h3>
+<table class="table table-striped w-auto">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Actions</th>
+    </tr>
+    <tbody>
+    <tr th:each="firm:${firms}">
+        <td th:utext="${firm.id}"></td>
+        <td th:utext="${firm.name}"></td>
+        <td>
+            <a href="#" data-mdb-toggle="modal" data-mdb-target="#delete_firm">Delete</a>
+            &nbsp
+            <a th:href="@{/firm_update(id=${firm.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a href="/firm_add">Create firm</a>
+<!-- Modal Delete-->
+<div class="modal fade" id="delete_firm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <td th:utext="${firm.id}"></td>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Are you sure?</h5>
+                <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
+                <form th:action="@{/firm_delete(id=${firm.id})}" th:method="delete">
+                    <a href="#" onclick="this.closest('form').submit();return false;" style="display: inline;">Delete</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script type="text/javascript" src="
+https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js
+"></script>
+</body>
+</html>
