@@ -23,6 +23,9 @@
         <module>Spring-cars</module>
         <module>SpringSongs</module>
         <module>Spring-ShoppingCart-thymeleaf</module>
+        <module>Spring-Security</module>
+        <module>Spring-Security/Basic</module>
+        <module>Spring-Security/UserGrant</module>
     </modules>
 
     <properties>

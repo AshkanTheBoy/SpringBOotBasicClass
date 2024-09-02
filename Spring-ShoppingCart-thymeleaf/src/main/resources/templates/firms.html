@@ -23,7 +23,10 @@ http://www.thymeleaf.org
         <td th:utext="${firm.id}"></td>
         <td th:utext="${firm.name}"></td>
         <td>
-            <a href="#" data-mdb-toggle="modal" data-mdb-target="#delete_firm">Delete</a>
+            <form th:action="@{/firm_delete(id=${firm.id})}" th:method="delete">
+                <a href="#" onclick="this.closest('form').submit();return false;"
+                   style="display: inline;">Delete</a>
+            </form>
             &nbsp
             <a th:href="@{/firm_update(id=${firm.id})}">Edit</a>
         </td>
@@ -33,7 +36,6 @@ http://www.thymeleaf.org
 <a href="/firm_add">Create firm</a>
 <!-- Modal Delete-->
 <div class="modal fade" id="delete_firm" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <td th:utext="${firm.id}"></td>
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -44,9 +46,7 @@ http://www.thymeleaf.org
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancel</button>
-                <form th:action="@{/firm_delete(id=${firm.id})}" th:method="delete">
-                    <a href="#" onclick="this.closest('form').submit();return false;" style="display: inline;">Delete</a>
-                </form>
+                <button type="submit" class="btn btn-primary" data-mdb-dismiss="modal">Delete</button>
             </div>
         </div>
     </div>

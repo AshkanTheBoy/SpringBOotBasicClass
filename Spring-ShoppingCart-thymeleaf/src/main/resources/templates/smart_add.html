@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smartphone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet"  th:href="@{/css/style.css}">
+</head>
+
+<body>
+<div class="container mt-5">
+    <h3>Add smartphone</h3>
+    <form method="post" th:action="@{/smart_add}" th:object = "${smart}">
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" th:field="*{name}">
+
+            <label for="firm" class="form-label">Firms</label>
+            <select class="form-select" aria-label="Firms" id="firm" name="firm">
+                <option></option>
+                <th:block th:each="firm: ${firms}">
+                    <option th:utext="${firm.name}" th:value="${firm.id}"></option>
+                </th:block>
+            </select>
+
+            <label for="os" class="form-label">Operating system</label>
+            <select  class="form-select" aria-label="OS" id="os" name="os">
+                <option></option>
+                <th:block th:each="osi:${oss}">
+                    <option th:utext="|${osi.name} - ${osi.developer}|" th:value="${osi.id}"></option>
+                </th:block>
+            </select>
+
+            <label for="size" class="form-label">Size</label>
+            <input type="number" class="form-control" id="size" th:field="*{size}">
+        </div>
+        <label class="form-label">Color</label>
+
+        <div class="container mb-3">
+            <input type="radio" name="color" id="red" value="#DB2828"/>
+            <label for="red" class="color"><span class="red"></span></label>
+
+            <input type="radio" name="color" id="yellow" value="#FBBD08"/>
+            <label for="yellow" class="color"><span class="yellow"></span></label>
+
+            <input type="radio" name="color" id="green" value="#21BA45"/>
+            <label for="green" class="color"><span class="green"></span></label>
+
+            <input type="radio" name="color" id="blue" value="#2185D0"/>
+            <label for="blue" class="color"><span class="blue"></span></label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Add smartphone</button>
+        <button type="reset" class="btn btn-secondary" value="Reset">Reset</button>
+    </form>
+</div>
+</body>
+</html>
